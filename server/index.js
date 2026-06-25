@@ -11,6 +11,11 @@ app.use(cors());
 app.use(express.json());
 
 // routes
+
+app.get("/", (req, res) => {
+  res.send("Portfolio API is running 🚀");
+});
+
 app.use("/api/contact", contactRoutes);
 
 const PORT = process.env.PORT || 3000;
