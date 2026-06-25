@@ -107,7 +107,7 @@ section {
   gap: 8px;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .nav-links {
     gap: 18px;
   }
@@ -122,8 +122,12 @@ section {
   .navbar-download {
     display: none;
   }
+} */
+@media (max-width: 992px) {
+  .navbar-download {
+    display: none;
+  }
 }
-
 @media (max-width: 768px) {
   .nav-container {
     padding: 16px 6%;

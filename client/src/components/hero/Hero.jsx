@@ -67,7 +67,7 @@ const Hero = () => {
           <a
             href="/resume/MAYBITUIN-RESUME-WEBDEV.pdf"
             download
-            className="btn secondary"
+            className="btn secondary dl-button"
           >
             <FaDownload className="download-icon" />
             <span className="dl-text">Download Resume</span>
