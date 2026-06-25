@@ -1,7 +1,7 @@
 import { FaGithub, FaLinkedin, FaSquareFacebook } from "react-icons/fa6";
 import { useState } from "react";
 import "./contact.css";
-
+// https://portfolio-2026-novo.onrender.com/api/contact
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,19 +29,16 @@ const Contact = () => {
     setButtonText("Sending...");
 
     try {
-      const res = await fetch(
-        "https://portfolio-2026-novo.onrender.com/api/contact",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            email,
-            subject,
-            message,
-          }),
-        },
-      );
+      const res = await fetch("http://localhost:3000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+        }),
+      });
 
       if (res.ok) {
         setSuccess(true);

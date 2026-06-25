@@ -1,34 +1,56 @@
-import "../config/env.js";
-import nodemailer from "nodemailer";
+// import "../config/env.js";
+// import nodemailer from "nodemailer";
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  // family: 4,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+// const transporter = nodemailer.createTransport({
+//   host: "smtp.gmail.com",
+//   port: 465,
+//   secure: true,
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS,
+//   },
+// });
+
+// export const sendEmail = async ({ name, email, subject, message }) => {
+//   return transporter.sendMail({
+//     from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
+//     to: process.env.EMAIL_USER,
+
+//     subject: subject || `New message from ${name}`,
+
+//     html: `
+//       <div>
+//         <h2>New Contact Message</h2>
+
+//         <p><strong>Name:</strong> ${name}</p>
+//         <p><strong>Email:</strong> ${email}</p>
+//         <p><strong>Subject:</strong> ${subject || "No subject provided"}</p>
+
+//         <p>${message}</p>
+//       </div>
+//     `,
+//   });
+// };
+
+import "../config/env.js";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendEmail = async ({ name, email, subject, message }) => {
-  return transporter.sendMail({
-    from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
+  return await resend.emails.send({
+    from: "Portfolio <onboarding@resend.dev>",
     to: process.env.EMAIL_USER,
-
     subject: subject || `New message from ${name}`,
 
     html: `
-      <div>
-        <h2>New Contact Message</h2>
+      <h2>New Contact Message</h2>
 
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject || "No subject provided"}</p>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Subject:</strong> ${subject}</p>
 
-        <p>${message}</p>
-      </div>
+      <p>${message}</p>
     `,
   });
 };
