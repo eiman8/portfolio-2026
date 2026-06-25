@@ -145,9 +145,6 @@ const Contact = () => {
             }}
           ></textarea>
 
-          {/* <button type="submit" disabled={loading}>
-            {loading ? <span className="spinner"></span> : "Send Message"}
-          </button> */}
           <button
             type="submit"
             disabled={loading}

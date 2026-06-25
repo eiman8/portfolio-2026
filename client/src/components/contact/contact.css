@@ -22,3 +22,8 @@
   background: #22c55e !important;
   color: white;
 }
+
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
