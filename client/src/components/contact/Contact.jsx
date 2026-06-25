@@ -29,16 +29,19 @@ const Contact = () => {
     setButtonText("Sending...");
 
     try {
-      const res = await fetch("http://localhost:3000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          subject,
-          message,
-        }),
-      });
+      const res = await fetch(
+        "https://portfolio-2026-novo.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            subject,
+            message,
+          }),
+        },
+      );
 
       if (res.ok) {
         setSuccess(true);
